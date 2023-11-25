@@ -1,0 +1,257 @@
+html {
+  font-size: 12pt;
+}
+body {
+  font-family: "Barlow", sans-serif;
+  /* color: #365b6d; */
+  /* background-color: #f2f1ec; */
+  /* border: 3px solid red !important; DEBUG: Body border */
+}
+
+header {
+  /* color: #f2f1ec; */
+  color: white;
+  /* border: 3px solid yellow !important; DEBUG: Header border */
+}
+.header-row {
+  width: 100%;
+  /* border: 2px solid cyan !important; DEBUG: Header row border */
+}
+.container {
+  /* border: 2px solid lime !important; DEBUG: Container border */
+}
+.pic {
+  width: 10rem;
+  max-width: 18rem;
+
+  img {
+    border-radius: 50%;
+  }
+}
+.title {
+  width: fit-content;
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+section {
+  padding: 2rem 0 0 0;
+}
+hr {
+  width: 120px;
+  text-align: left;
+  margin-left: 0;
+}
+
+.my-contacts div {
+  margin-bottom: 0.2rem;
+}
+.hard-skills div div {
+  margin-bottom: 0.2rem;
+}
+.professional-experience .company {
+  margin-top: 0.2rem;
+}
+.professional-experience .date {
+  margin-bottom: 0.2rem;
+}
+
+.show-on-print {
+  display: none;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--bs-secondary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-footer {
+  .btn {
+    display: none;
+  }
+}
+
+footer {
+  text-align: center;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .col-right {
+    order: -1; /* Right column appears first */
+  }
+  .col-left {
+    order: 0; /* Left column appears second */
+    display: flex;
+    flex-direction: column;
+  }
+  .hard-skills {
+    order: 1;
+  }
+  .soft-skills {
+    order: 2;
+  }
+  .education {
+    order: 3;
+  }
+  .my-contacts {
+    order: 4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    height: 12rem;
+  }
+  .pic {
+    width: 100%;
+  }
+  .title {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .col-right {
+    padding-left: 4rem;
+  }
+  .my-contacts {
+    padding: 5rem 0 0 0;
+  }
+  .modal-footer {
+    .btn {
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header {
+    height: 15rem;
+  }
+  .title {
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+  }
+  .my-contacts {
+    padding: 8rem 0 0 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .title {
+    h1 {
+      font-size: 5rem;
+    }
+    p {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media print {
+  @page {
+    size: A4; /* DIN A4 standard, Europe */
+    margin: 0 !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  html,
+  body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* height: 282mm; */
+    /* background: #FFF;
+      overflow: visible; */
+  }
+  html {
+    font-size: 10pt;
+  }
+  body {
+    /* padding-top: 15mm; */
+  }
+  header {
+    height: 12rem;
+    flex: 1 0 auto;
+    width: 100% !important;
+    max-width: none !important;
+    /* border: 5px solid red !important; DEBUG: Print header border */
+  }
+  header .container {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    /* border: 3px solid blue !important; DEBUG: Print container border */
+  }
+  /* main .container {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  } */
+  .pic {
+    width: 12rem;
+  }
+  .title {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .col-right {
+    padding-left: 2rem;
+  }
+  .my-contacts {
+    padding: 5rem 0 0 0;
+  }
+  hr {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+  }
+  section {
+    padding: 1.5rem 0 0 0;
+  }
+  section h2 {
+    font-size: 16pt;
+  }
+  .hide-on-print {
+    display: none;
+  }
+  .show-on-print {
+    display: block;
+  }
+  footer {
+    display: none;
+  }
+}
