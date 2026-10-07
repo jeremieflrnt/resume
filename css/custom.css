@@ -80,12 +80,6 @@ hr {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.modal-footer {
-  .btn {
-    display: none;
-  }
-}
-
 footer {
   text-align: center;
   color: white;
@@ -134,11 +128,6 @@ footer {
   }
   .my-contacts {
     padding: 5rem 0 0 0;
-  }
-  .modal-footer {
-    .btn {
-      display: block;
-    }
   }
 }
 
@@ -234,7 +223,7 @@ footer {
     padding-left: 2rem;
   }
   .my-contacts {
-    padding: 5rem 0 0 0;
+    padding: 4rem 0 0 0;
   }
   hr {
     margin: 0.5rem 0.5rem 0.5rem 0;
@@ -250,6 +239,9 @@ footer {
   }
   .show-on-print {
     display: block;
+  }
+  .description .show-on-print {
+    display: inline;
   }
   footer {
     display: none;

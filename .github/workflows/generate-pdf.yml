@@ -1,0 +1,44 @@
+name: Generate resume PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'css/**'
+      - 'scripts/generate-pdf.py'
+  schedule:
+    - cron: '0 6 1 * *' # monthly, keeps dynamic durations up to date
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.63.0 && playwright install --with-deps chromium
+      - run: python scripts/generate-pdf.py
+      - name: Validate PDF (single page, non-empty)
+        run: |
+          pip install pymupdf
+          python - <<'EOF'
+          import os, pymupdf
+          doc = pymupdf.open("resume-print.pdf")
+          assert len(doc) == 1, f"expected 1 page, got {len(doc)}"
+          size = os.path.getsize("resume-print.pdf")
+          assert size > 100_000, f"PDF suspiciously small: {size} bytes"
+          print(f"OK: 1 page, {size} bytes")
+          EOF
+      - name: Commit PDF if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resume-print.pdf
+          git diff --cached --quiet || git commit -m "chore: regenerate resume PDF [skip ci]"
+          git push
